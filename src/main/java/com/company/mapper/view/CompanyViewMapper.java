@@ -20,7 +20,6 @@ public class CompanyViewMapper {
         }
         companyResponse.setCompanyName(company.getCompanyName());
         companyResponse.setLocatedCountry(company.getLocatedCountry());
-       // companyResponse.setCourses(company.getCourseList());
         return companyResponse;
 
     }
