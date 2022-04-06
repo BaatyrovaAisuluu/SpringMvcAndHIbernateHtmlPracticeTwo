@@ -8,6 +8,7 @@ import com.company.model.Teacher;
 import com.company.repository.TeacherRepository;
 import com.company.service.TeacherService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -22,6 +23,7 @@ public class TeacherServiceImpl implements TeacherService {
     private final TeacherRepository teacherRepository;
     private final TeacherEditMapper teacherEditMapper;
     private final TeacherViewMapper teacherViewMapper;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public List<Teacher> getTeacher() {
@@ -30,6 +32,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public TeacherResponse create(Long id, TeacherRequest teacherRequest) {
+        teacherRequest.setPassword(passwordEncoder.encode(teacherRequest.getPassword()));
         return teacherViewMapper.viewTeacher(teacherRepository.
                 save(teacherEditMapper.create(id, teacherRequest)));
     }
@@ -54,5 +57,10 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public Optional<Teacher> findById(Long id) {
         return teacherRepository.findById(id);
+    }
+
+    @Override
+    public Teacher saveAdmin(Teacher teacherRequest) {
+        return teacherRepository.save(teacherRequest);
     }
 }

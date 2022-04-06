@@ -1,6 +1,7 @@
 package com.company.dto.request;
 
 import com.company.model.Company;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +15,7 @@ public class CourseRequest {
 
     private String duration;
 
+    @JsonIgnore
     private Company companyId;
 
 }

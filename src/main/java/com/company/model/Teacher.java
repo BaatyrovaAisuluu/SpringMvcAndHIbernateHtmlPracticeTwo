@@ -33,8 +33,6 @@ public class Teacher {
     @Size(min = 1, max = 30, message = "firstName should be between 2 and 25 characters")
     private String TeacherFirstName;
 
-    @Email(message = "email must follow the formatter: ***@*** ")
-    private String email;
 
     @Size(min = 1, max = 25, message = "lastName should be between 2 and 25 characters")
     private String lastName;
@@ -43,4 +41,9 @@ public class Teacher {
     @JoinColumn(name = "course_id")
     @JsonIgnore
     private Course course;
+
+    @OneToOne(cascade = {MERGE, REFRESH,PERSIST}, orphanRemoval = true,
+            fetch = FetchType.EAGER)
+    @JoinColumn(name = "auth_info_id")
+    private AuthInfo authInfo;
 }

@@ -21,4 +21,6 @@ public interface TeacherService {
 
     Optional<Teacher> findById(Long id);
 
+    Teacher saveAdmin(Teacher teacher);
+
 }

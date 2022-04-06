@@ -35,11 +35,6 @@ public class Student {
     @Size(min = 1, max = 25, message = "firstName should be between 2 and 25 characters")
     private String firstName;
 
-    @Column(name = "student_email")
-    @Email(message = "email must follow the formatter: ***@*** ")
-    @NotBlank(message = "Email must have a value")
-    private String email;
-
     @Column(name = "student_last_name")
     @NotEmpty(message = "lastName should not be empty")
     @Size(min = 1, max = 25, message = "lastName should be between 2 and 25 characters")
@@ -52,4 +47,16 @@ public class Student {
     @JsonIgnore
     private Group group;
 
+    @OneToOne(cascade = {MERGE, REFRESH,PERSIST}, orphanRemoval = true,
+            fetch = FetchType.EAGER)
+    @JoinColumn(name = "auth_info_id")
+    private AuthInfo authInfo;
+
+    public AuthInfo getAuthInfo() {
+        return authInfo;
+    }
+
+    public void setAuthInfo(AuthInfo authInfo) {
+        this.authInfo = authInfo;
+    }
 }

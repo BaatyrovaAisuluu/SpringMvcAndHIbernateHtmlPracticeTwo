@@ -18,17 +18,8 @@ public class TeacherViewMapper {
         TeacherResponse teacherResponse = new TeacherResponse();
         teacherResponse.setId(String.valueOf(teacher.getId()));
         teacherResponse.setTeacherFirstName(teacher.getTeacherFirstName());
-        teacherResponse.setEmail(teacher.getEmail());
         teacherResponse.setLastName(teacher.getLastName());
         return teacherResponse;
     }
 
-    public List<TeacherResponse> viewStudent(List<Teacher> teachers) {
-        List<TeacherResponse> teacherResponses = new ArrayList<>();
-        for (Teacher s : teachers
-        ) {
-            teacherResponses.add(viewTeacher(s));
-        }
-        return teacherResponses;
-    }
 }

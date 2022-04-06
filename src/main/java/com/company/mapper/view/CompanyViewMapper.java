@@ -22,7 +22,7 @@ public class CompanyViewMapper {
         companyResponse.setLocatedCountry(company.getLocatedCountry());
         return companyResponse;
 
-
+        
     }
 
     public List<CompanyResponse> viewCompanies(List<Company> companies) {

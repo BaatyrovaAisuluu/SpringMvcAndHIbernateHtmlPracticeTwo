@@ -8,6 +8,7 @@ import com.company.model.Student;
 import com.company.repository.StudentRepository;
 import com.company.service.StudentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -22,6 +23,7 @@ public class StudentServiceImpl implements StudentService {
     private final StudentRepository studentRepository;
     private final StudentEditMapper studentEditMapper;
     private final StudentViewMapper studentViewMapper;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public List<Student> getStudent() {
@@ -30,6 +32,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentResponse create(Long id, StudentRequest studentRequest) {
+        studentRequest.setPassword(passwordEncoder.encode(studentRequest.getPassword()));
         return studentViewMapper.viewStudent(studentRepository.
                 save(studentEditMapper.create(id, studentRequest)));
     }

@@ -19,18 +19,9 @@ public class StudentViewMapper {
 
         studentResponse.setId(String.valueOf(student.getId()));
         studentResponse.setFirstName(student.getFirstName());
-        studentResponse.setEmail(student.getEmail());
         studentResponse.setLastName(student.getLastName());
         studentResponse.setStudyFormat(student.getStudyFormat());
         return studentResponse;
     }
 
-    public List<StudentResponse> viewStudent(List<Student> students) {
-        List<StudentResponse> studentResponses = new ArrayList<>();
-        for (Student s : students
-        ) {
-            studentResponses.add(viewStudent(s));
-        }
-        return studentResponses;
-    }
 }

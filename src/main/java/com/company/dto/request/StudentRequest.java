@@ -1,8 +1,12 @@
 package com.company.dto.request;
 
 import com.company.model.Group;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 
 @Getter
@@ -15,7 +19,10 @@ public class StudentRequest {
 
     private String lastName;
 
-    private com.company.model.studyFormat studyFormat;
+    private String password;
 
+    @Enumerated(EnumType.STRING)
+    private com.company.model.studyFormat studyFormat;
+    @JsonIgnore
     private Group groupId;
 }

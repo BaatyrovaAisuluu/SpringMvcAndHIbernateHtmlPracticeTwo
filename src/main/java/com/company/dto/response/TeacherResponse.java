@@ -1,5 +1,6 @@
 package com.company.dto.response;
 
+import com.company.model.AuthInfo;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +10,6 @@ public class TeacherResponse {
 
     private String id;
     private String TeacherFirstName;
-    private String email;
     private String lastName;
 
 }

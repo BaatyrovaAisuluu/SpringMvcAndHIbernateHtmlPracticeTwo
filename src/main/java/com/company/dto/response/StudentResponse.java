@@ -11,7 +11,6 @@ public class StudentResponse {
 
     private String firstName;
 
-    private String email;
 
     private String lastName;
 
